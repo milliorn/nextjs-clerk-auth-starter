@@ -188,3 +188,32 @@ return (
   </div>
 );
 ```
+
+Currently, no pages but the home page exist.
+
+## Create a Protected Page
+
+Create a new file called `page.tsx` in the `app\dashboard` directory (or whatever you want to call it). Then add the following code:
+
+```tsx
+type Props = {};
+
+const Dashboard = (props: Props) => {
+  return (
+    <>
+      <h1 className="text-2xl font-bold mb-5">Welcome</h1>
+      <p className="mb-5">Welcome User!</p>
+    </>
+  );
+};
+
+export default Dashboard;
+```
+
+To check that the page is working, go to `http://localhost:3000/dashboard` and you should see the page. Next, go to `https://clerk.com/docs/references/nextjs/auth-middleware#auth-middleware` and copy the code for the `authMiddleware` function. Then create a new file called `middleware.ts` in the root of your project and paste the code. Go back to `http://localhost:3000/dashboard` and you should be redirected to login page.
+
+```tsx
+
+```
+
+At this point, you should be able to register and login using default redirect page. Now we need to create a custom redirect page.
