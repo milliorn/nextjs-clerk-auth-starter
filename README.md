@@ -508,4 +508,16 @@ export default Header;
 
 ## Test Email Signup & Verification Code Flow
 
-Make sure if you are signed in, to sign out. Now, click on the `Register` link and sign up with an email. You should receive an email with a verification code. Copy the verification code and paste it into the input field. Then click `Verify`. You should be redirected to the `Dashboard` page.
+Make sure if you are signed in, to sign out. Now, click on the `Register` link and sign up with an email. You should receive an email with a verification code. Copy the verification code and paste it into the input field. Then click `Verify`. You should be redirected to the `Dashboard` page. Make sure (if you have not) update your public routes in `middleware.ts` to include the `Register` page.
+
+```tsx
+import { authMiddleware } from "@clerk/nextjs";
+
+export default authMiddleware({
+  publicRoutes: ["/", "/login", "/register"],
+});
+
+export const config = {
+  matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
+};
+```
