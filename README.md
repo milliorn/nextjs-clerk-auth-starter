@@ -60,4 +60,54 @@ npm i @clerk/nextjs
 
 ## Create Clerk Account
 
-Go to [Clerk](https://clerk.com) and create an account. Once you've created an account, create a new application at https://dashboard.clerk.com/ by clicking on `Add application`. Name your application whatever you want. Select how your users will sign in, then click `Create application`. Once your application is created, scroll down and copy the `API Key` and `Public Key` into a new file in your project root called `.env.local`.
+Go to [Clerk](https://clerk.com) and create an account. Once you've created an account, create a new application at https://dashboard.clerk.com/ by clicking on `Add application`. Name your application whatever you want. Select how your users will sign in, then click `Create application`. Once your application is created, scroll down and copy the `API Key` and `Public Key` into a new file in your project root called `.env.local`. If you use another framework other than Next.Js make sure you select the correct framework in the dropdown.
+
+## Create Clerk Provider
+
+Go to your layout.tsx file located at `app\layout.tsx`. Import the `ClerkProvider` from `@clerk/nextjs`. Then wrap the `ClerkProvider` around the `children` prop.
+
+```tsx
+import { ClerkProvider } from "@clerk/nextjs";
+
+<ClerkProvider>
+  <html lang="en">
+    <body className={inter.className}>{children}</body>
+  </html>
+</ClerkProvider>;
+```
+
+The final code at this point for `app\layout.tsx` should look like this:
+
+```tsx
+import { ClerkProvider } from "@clerk/nextjs";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "Next.js + Clerk Starter",
+  description: "A starter for Next.js + Clerk",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <ClerkProvider>
+      <html lang="en">
+        <body className={inter.className}>
+          <main className="container mx-auto">
+            <div className="flex items-start justify-center min-h-screen">
+              <div className="mt-20">{children}</div>
+            </div>
+          </main>
+        </body>
+      </html>
+    </ClerkProvider>
+  );
+}
+```
