@@ -231,3 +231,47 @@ NEXT_PUBLIC_CLERK_SIGN_UP_URL='/login'
 ```
 
 This is necessary to point to your new redirect route pages.
+
+## Redirect Login Page
+
+Create a file at `app\login\[[...login]]\page.tsx` and add the following code:
+
+```tsx
+type Props = {};
+
+const Login = (props: Props) => {
+  return <div>Login</div>;
+};
+
+export default Login;
+```
+
+The, click on `Register` or go to `localhost:3000/login` and you should see the login page. `[...login]` is a dynamic route that will catch all routes that start with `/login`. You can either add your own components to this page or use the default Clerk components. To use the default Clerk components, add the following code to the `Login` component:
+
+```tsx
+import { SignIn } from "@clerk/nextjs";
+```
+
+Then in the return statement, add the `SignIn` component:
+
+```tsx
+return <SignIn path="/login" routing="path" />;
+```
+
+Now, it should all look like this.
+
+```tsx
+import { SignIn } from "@clerk/nextjs";
+
+type Props = {};
+
+const Login = (props: Props) => {
+  return <SignIn path="/login" routing="path" />;
+};
+
+export default Login;
+```
+
+To create a custom Register page, repeat the steps above used to create the custom Login page. The only difference is that you will use the `Register` component instead of the `Login` component.
+
+You can now go to `https://dashboard.clerk.com/` and confirm that sign in and sign up work.
