@@ -275,3 +275,88 @@ export default Login;
 To create a custom Register page, repeat the steps above used to create the custom Login page. The only difference is that you will use the `Register` component instead of the `Login` component.
 
 You can now go to `https://dashboard.clerk.com/` and confirm that sign in and sign up work.
+
+## Update Header Based on Auth Status
+
+To update the header based on the auth status, we need to import the `auth` from `@clerk/nextjs`.
+
+```tsx
+import { auth } from "@clerk/nextjs";
+```
+
+Then we need to destruct the `userId` property from `auth()`. Add this inside your `Header` component.
+
+```tsx
+const { user } = auth();
+```
+
+Now we can use the `user` object to determine if the user is logged in or not. If the user is logged in, we will show the `Dashboard` link. If the user is not logged in, we will show the `Login` and `Register` links. Here is the changes to the `Header` component:
+
+```tsx
+{
+  !userId && (
+    <>
+      <Link
+        href="/login"
+        className="text-indigo-100 hover:text-indigo-300 mr-4"
+      >
+        LogIn
+      </Link>
+      <Link
+        href="/register"
+        className="text-indigo-100 hover:text-indigo-300 mr-4"
+      >
+        Register
+      </Link>
+    </>
+  );
+}
+```
+
+Now your `Header` component should look like this:
+
+```tsx
+import { auth } from "@clerk/nextjs";
+import Link from "next/link";
+
+type Props = {};
+
+const Header = (props: Props) => {
+  const { userId } = auth();
+  // console.log(userId);
+
+  return (
+    <div>
+      <nav className="bg-indigo-900 p-4 flex items-center justify-between mb-4">
+        <div className="flex items-center">
+          <Link href="/">
+            <div className="text-sm uppercase font-bold text-indigo-50">
+              Clerk Starter
+            </div>
+          </Link>
+        </div>
+        <div className="text-indigo-50 flex items-center">
+          {!userId && (
+            <>
+              <Link
+                href="/login"
+                className="text-indigo-100 hover:text-indigo-300 mr-4"
+              >
+                LogIn
+              </Link>
+              <Link
+                href="/register"
+                className="text-indigo-100 hover:text-indigo-300 mr-4"
+              >
+                Register
+              </Link>
+            </>
+          )}
+        </div>
+      </nav>
+    </div>
+  );
+};
+
+export default Header;
+```
