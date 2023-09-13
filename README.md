@@ -217,3 +217,17 @@ To check that the page is working, go to `http://localhost:3000/dashboard` and y
 ```
 
 At this point, you should be able to register and login using default redirect page. Now we need to create a custom redirect page.
+
+## .env file
+
+Create a new file called `.env` in the root of your project and add the following code:
+
+```md
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL='/dashboard'
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL='/dashboard'
+NEXT_PUBLIC_CLERK_SIGN_IN_URL='/login'
+NEXT_PUBLIC_CLERK_SIGN_OUT_URL'/'
+NEXT_PUBLIC_CLERK_SIGN_UP_URL='/login'
+```
+
+This is necessary to point to your new redirect route pages.
