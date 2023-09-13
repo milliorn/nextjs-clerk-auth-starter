@@ -505,3 +505,7 @@ const Header = (props: Props) => {
 
 export default Header;
 ```
+
+## Test Email Signup & Verification Code Flow
+
+Make sure if you are signed in, to sign out. Now, click on the `Register` link and sign up with an email. You should receive an email with a verification code. Copy the verification code and paste it into the input field. Then click `Verify`. You should be redirected to the `Dashboard` page.
