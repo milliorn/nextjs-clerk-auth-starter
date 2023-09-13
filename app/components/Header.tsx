@@ -9,30 +9,29 @@ const Header = (props: Props) => {
 
   return (
     <div>
-      <nav className="bg-indigo-900 p-4 flex items-center justify-between mb-4">
+      <nav className="bg-indigo-900  text-indigo-50 p-4 flex items-center justify-between mb-4">
         <div className="flex items-center">
           <Link href="/">
-            <div className="text-sm uppercase font-bold text-indigo-50">
+            <div className="hover:text-indigo-300 text-sm uppercase font-bold">
               Clerk Starter
             </div>
           </Link>
         </div>
-        <div className="text-indigo-50 flex items-center">
+        <div className="flex items-center">
           {!userId && (
             <>
-              <Link
-                href="/login"
-                className="text-indigo-100 hover:text-indigo-300 mr-4"
-              >
+              <Link href="/login" className="hover:text-indigo-300 mr-4">
                 LogIn
               </Link>
-              <Link
-                href="/register"
-                className="text-indigo-100 hover:text-indigo-300 mr-4"
-              >
+              <Link href="/register" className="hover:text-indigo-300 mr-4">
                 Register
               </Link>
             </>
+          )}
+          {userId && (
+            <Link href="/profile" className="hover:text-indigo-300 mr-4">
+              Profile
+            </Link>
           )}
           <div className="ml-auto">
             <UserButton afterSignOutUrl="/" />

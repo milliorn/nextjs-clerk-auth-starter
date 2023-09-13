@@ -413,6 +413,87 @@ const Header = (props: Props) => {
               </Link>
             </>
           )}
+          <div className="mx-auto">
+            <UserButton afterSignOutUrl="/" />
+          </div>
+        </div>
+      </nav>
+    </div>
+  );
+};
+
+export default Header;
+```
+
+## Create Profile Page
+
+Create a new file called `page.tsx` in the `app\profile` directory (or whatever you want to call it). Then add the following code:
+
+```tsx
+import { UserProfile } from "@clerk/nextjs";
+
+type Props = {};
+
+const Profile = (props: Props) => {
+  return (
+    <div>
+      <UserProfile />
+    </div>
+  );
+};
+
+export default Profile;
+```
+
+Now go to `http://localhost:3000/profile` and you should see the profile page. Next, go back to `Header` component and add the `Profile` link.
+
+````tsx
+          {userId && (
+            <Link href="/profile" className="hover:text-indigo-300 mr-4">
+              Profile
+            </Link>
+          )}
+          ```
+````
+
+Now your `Header` component should look like this:
+
+```tsx
+import { auth, UserButton } from "@clerk/nextjs";
+import Link from "next/link";
+
+type Props = {};
+
+const Header = (props: Props) => {
+  const { userId } = auth();
+  // console.log(userId);
+
+  return (
+    <div>
+      <nav className="bg-indigo-900  text-indigo-50 p-4 flex items-center justify-between mb-4">
+        <div className="flex items-center">
+          <Link href="/">
+            <div className="hover:text-indigo-300 text-sm uppercase font-bold">
+              Clerk Starter
+            </div>
+          </Link>
+        </div>
+        <div className="flex items-center">
+          {!userId && (
+            <>
+              <Link href="/login" className="hover:text-indigo-300 mr-4">
+                LogIn
+              </Link>
+              <Link href="/register" className="hover:text-indigo-300 mr-4">
+                Register
+              </Link>
+            </>
+          )}
+          {userId && (
+            <Link href="/profile" className="hover:text-indigo-300 mr-4">
+              Profile
+            </Link>
+          )}
           <div className="ml-auto">
             <UserButton afterSignOutUrl="/" />
           </div>
