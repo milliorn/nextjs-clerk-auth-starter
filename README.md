@@ -223,11 +223,10 @@ At this point, you should be able to register and login using default redirect p
 Create a new file called `.env` in the root of your project and add the following code:
 
 ```md
-NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL='/dashboard'
-NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL='/dashboard'
-NEXT_PUBLIC_CLERK_SIGN_IN_URL='/login'
-NEXT_PUBLIC_CLERK_SIGN_OUT_URL'/'
-NEXT_PUBLIC_CLERK_SIGN_UP_URL='/login'
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/dashboard
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/login
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/login
 ```
 
 This is necessary to point to your new redirect route pages.
@@ -352,6 +351,71 @@ const Header = (props: Props) => {
               </Link>
             </>
           )}
+        </div>
+      </nav>
+    </div>
+  );
+};
+
+export default Header;
+```
+
+## UserButton Component
+
+Go back to your `Header` component and add the following code:
+
+```tsx
+import { auth, UserButton } from "@clerk/nextjs";
+```
+
+Then add the `UserButton` component to the `Header` component.
+
+```tsx
+<UserButton afterSignOutUrl="/" />
+```
+
+Now your `Header` component should look like this:
+
+```tsx
+import { auth, UserButton } from "@clerk/nextjs";
+import Link from "next/link";
+
+type Props = {};
+
+const Header = (props: Props) => {
+  const { userId } = auth();
+  // console.log(userId);
+
+  return (
+    <div>
+      <nav className="bg-indigo-900 p-4 flex items-center justify-between mb-4">
+        <div className="flex items-center">
+          <Link href="/">
+            <div className="text-sm uppercase font-bold text-indigo-50">
+              Clerk Starter
+            </div>
+          </Link>
+        </div>
+        <div className="text-indigo-50 flex items-center">
+          {!userId && (
+            <>
+              <Link
+                href="/login"
+                className="text-indigo-100 hover:text-indigo-300 mr-4"
+              >
+                LogIn
+              </Link>
+              <Link
+                href="/register"
+                className="text-indigo-100 hover:text-indigo-300 mr-4"
+              >
+                Register
+              </Link>
+            </>
+          )}
+          <div className="ml-auto">
+            <UserButton afterSignOutUrl="/" />
+          </div>
         </div>
       </nav>
     </div>

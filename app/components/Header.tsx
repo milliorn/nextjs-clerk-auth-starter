@@ -1,4 +1,4 @@
-import { auth } from "@clerk/nextjs";
+import { auth, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 
 type Props = {};
@@ -34,6 +34,9 @@ const Header = (props: Props) => {
               </Link>
             </>
           )}
+          <div className="ml-auto">
+            <UserButton afterSignOutUrl="/" />
+          </div>
         </div>
       </nav>
     </div>
