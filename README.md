@@ -111,3 +111,80 @@ export default function RootLayout({
   );
 }
 ```
+
+## Header Component
+
+Create a new file called `Header.tsx` in the `app\components` directory. Then add the following code:
+
+```tsx
+import Link from "next/link";
+
+type Props = {};
+
+const Header = (props: Props) => {
+  return (
+    <div>
+      <nav className="bg-sky-900 p-4 flex items-center justify-between mb-4">
+        <div className="flex items-center">
+          <Link href="/">
+            <div className="text-lg uppercase font-bold text-sky-50">
+              Clerk Starter
+            </div>
+          </Link>
+        </div>
+      </nav>
+    </div>
+  );
+};
+
+export default Header;
+```
+
+Now we need to import the `Header` component into our `app\layout.tsx` file and add it to the layout.
+
+```tsx
+import Header from "./components/Header";
+```
+
+Place it after the `main` component.
+
+```tsx
+<main className="container mx-auto">
+  <Header />
+  <div className="flex items-start justify-center min-h-screen">
+    <div className="mt-20">{children}</div>
+  </div>
+</main>
+```
+
+Now we need to add links to the header. Replace the `Header` component with the following code:
+
+```tsx
+return (
+  <div>
+    <nav className="bg-indigo-900 p-4 flex items-center justify-between mb-4">
+      <div className="flex items-center">
+        <Link href="/">
+          <div className="text-sm uppercase font-bold text-indigo-50">
+            Clerk Starter
+          </div>
+        </Link>
+      </div>
+      <div className="text-indigo-50">
+        <Link
+          href="/login"
+          className="text-indigo-100 hover:text-indigo-300 mr-4"
+        >
+          LogIn
+        </Link>
+        <Link
+          href="/register"
+          className="text-indigo-100 hover:text-indigo-300 mr-4"
+        >
+          Register
+        </Link>
+      </div>
+    </nav>
+  </div>
+);
+```
