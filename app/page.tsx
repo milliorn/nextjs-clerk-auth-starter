@@ -1,3 +1,4 @@
+// Define the Home functional component
 export default function Home() {
   return (
     <main className="mx-auto text-center">
