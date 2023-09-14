@@ -51,5 +51,4 @@ const Header = (props: Props) => {
   );
 };
 
-// Export the Header component as the default export
 export default Header;
