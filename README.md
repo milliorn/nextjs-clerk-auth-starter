@@ -178,10 +178,10 @@ return (
           LogIn
         </Link>
         <Link
-          href="/register"
+          href="/registration"
           className="text-indigo-100 hover:text-indigo-300 mr-4"
         >
-          Register
+          Signup
         </Link>
       </div>
     </nav>
@@ -245,7 +245,7 @@ const Login = (props: Props) => {
 export default Login;
 ```
 
-The, click on `Register` or go to `localhost:3000/login` and you should see the login page. `[...login]` is a dynamic route that will catch all routes that start with `/login`. You can either add your own components to this page or use the default Clerk components. To use the default Clerk components, add the following code to the `Login` component:
+Then, click on `Login` or go to `localhost:3000/login` and you should see the login page. `[...login]` is a dynamic route that will catch all routes that start with `/login`. You can either add your own components to this page or use the default Clerk components. To use the default Clerk components, add the following code to the `Login` component:
 
 ```tsx
 import { SignIn } from "@clerk/nextjs";
@@ -254,7 +254,7 @@ import { SignIn } from "@clerk/nextjs";
 Then in the return statement, add the `SignIn` component:
 
 ```tsx
-return <SignIn path="/login" routing="path" />;
+return <SignIn />;
 ```
 
 Now, it should all look like this.
@@ -265,13 +265,13 @@ import { SignIn } from "@clerk/nextjs";
 type Props = {};
 
 const Login = (props: Props) => {
-  return <SignIn path="/login" routing="path" />;
+  return <SignIn />;
 };
 
 export default Login;
 ```
 
-To create a custom Register page, repeat the steps above used to create the custom Login page. The only difference is that you will use the `Register` component instead of the `Login` component.
+To create a custom Signup page, repeat the steps above used to create the custom Login page. The only difference is that you will use the `Signup` component instead of the `Login` component.
 
 You can now go to `https://dashboard.clerk.com/` and confirm that sign in and sign up work.
 
@@ -289,7 +289,7 @@ Then we need to destruct the `userId` property from `auth()`. Add this inside yo
 const { user } = auth();
 ```
 
-Now we can use the `user` object to determine if the user is logged in or not. If the user is logged in, we will show the `Dashboard` link. If the user is not logged in, we will show the `Login` and `Register` links. Here is the changes to the `Header` component:
+Now we can use the `user` object to determine if the user is logged in or not. If the user is logged in, we will show the `Dashboard` link. If the user is not logged in, we will show the `Login` and `Signup` links. Here is the changes to the `Header` component:
 
 ```tsx
 {
@@ -302,10 +302,10 @@ Now we can use the `user` object to determine if the user is logged in or not. I
         LogIn
       </Link>
       <Link
-        href="/register"
+        href="/registration"
         className="text-indigo-100 hover:text-indigo-300 mr-4"
       >
-        Register
+        Signup
       </Link>
     </>
   );
@@ -344,10 +344,10 @@ const Header = (props: Props) => {
                 LogIn
               </Link>
               <Link
-                href="/register"
+                href="/registration"
                 className="text-indigo-100 hover:text-indigo-300 mr-4"
               >
-                Register
+                Signup
               </Link>
             </>
           )}
@@ -406,7 +406,7 @@ const Header = (props: Props) => {
                 LogIn
               </Link>
               <Link
-                href="/register"
+                href="/registration"
                 className="text-indigo-100 hover:text-indigo-300 mr-4"
               >
                 Register
@@ -484,7 +484,7 @@ const Header = (props: Props) => {
               <Link href="/login" className="hover:text-indigo-300 mr-4">
                 LogIn
               </Link>
-              <Link href="/register" className="hover:text-indigo-300 mr-4">
+              <Link href="/registration" className="hover:text-indigo-300 mr-4">
                 Register
               </Link>
             </>
@@ -508,13 +508,13 @@ export default Header;
 
 ## Test Email Signup & Verification Code Flow
 
-Make sure if you are signed in, to sign out. Now, click on the `Register` link and sign up with an email. You should receive an email with a verification code. Copy the verification code and paste it into the input field. Then click `Verify`. You should be redirected to the `Dashboard` page. Make sure (if you have not) update your public routes in `middleware.ts` to include the `Register` page.
+Make sure if you are signed in, to sign out. Now, click on the `Signup` link and sign up with an email. You should receive an email with a verification code. Copy the verification code and paste it into the input field. Then click `Verify`. You should be redirected to the `Dashboard` page. Make sure (if you have not) update your public routes in `middleware.ts` to include the `Register` page.
 
 ```tsx
 import { authMiddleware } from "@clerk/nextjs";
 
 export default authMiddleware({
-  publicRoutes: ["/", "/login", "/register"],
+  publicRoutes: ["/", "/login", "/registration"],
 });
 
 export const config = {

@@ -2,8 +2,8 @@ import { SignIn } from "@clerk/nextjs";
 
 type Props = {};
 
-const Login = (props: Props) => {
-  return <SignIn  />;
+const Registration = (props: Props) => {
+  return <SignIn />;
 };
 
-export default Login;
+export default Registration;

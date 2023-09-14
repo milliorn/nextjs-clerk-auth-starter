@@ -20,16 +20,16 @@ const Header = (props: Props) => {
         <div className="flex items-center">
           {!userId && (
             <>
-              <Link href="/login" className="hover:text-indigo-300 mr-4">
+              <Link href="login" className="hover:text-indigo-300 mr-4">
                 LogIn
               </Link>
-              <Link href="/register" className="hover:text-indigo-300 mr-4">
+              <Link href="registration" className="hover:text-indigo-300 mr-4">
                 Register
               </Link>
             </>
           )}
           {userId && (
-            <Link href="/profile" className="hover:text-indigo-300 mr-4">
+            <Link href="profile" className="hover:text-indigo-300 mr-4">
               Profile
             </Link>
           )}
