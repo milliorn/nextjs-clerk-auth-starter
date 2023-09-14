@@ -21,7 +21,7 @@
 - [Custom Themes](#custom-themes)
 - [Conclusion](#conclusion)
 
-This guide explains the process of adding secure authentication to your Next.js application using Clerk [Clerk](https://clerk.com). Clerk is a secure authentication platform that allows you to add secure authentication to your application in minutes. Clerk is a great alternative to Auth0, Firebase, and other authentication platforms. Clerk is free for up to 100 users. If you need more than 100 users, you can contact Clerk for a custom plan.
+This guide explains the process of adding secure authentication to your Next.js application using [Clerk](https://clerk.com). Clerk is a secure authentication platform that allows you to add secure authentication to your application in minutes. Clerk is a great alternative to Auth0, Firebase, and other authentication platforms. Clerk is free for up to 100 users. If you need more than 100 users, you can contact Clerk for a custom plan.
 
 ## Introduction
 
