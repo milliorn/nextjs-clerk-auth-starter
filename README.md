@@ -21,7 +21,7 @@
 - [Custom Themes](#custom-themes)
 - [Conclusion](#conclusion)
 
-This guide explains the process of adding secure authentication to your Next.js application using [Clerk](https://clerk.com). Clerk is a secure authentication platform that allows you to add secure authentication to your application in minutes. Clerk is a great alternative to Auth0, Firebase, and other authentication platforms. Clerk is free for up to 100 users. If you need more than 100 users, you can contact Clerk for a custom plan.
+This guide explains the process of adding secure authentication to your Next.js application using [Clerk](https://clerk.com). Clerk is a secure authentication platform that allows you to add secure authentication to your application in minutes. Clerk is a great alternative to Auth0, Firebase, and other authentication platforms. Clerk is free for up to 100 users.
 
 ## Introduction
 
@@ -29,13 +29,13 @@ Welcome to a comprehensive guide on integrating secure authentication into your 
 
 ### Why Clerk?
 
-Clerk offers a robust alternative to established authentication platforms such as Auth0 and Firebase. It stands out for its simplicity, flexibility, and robust security features. Even better, Clerk is free for up to 100 users, making it an attractive option for startups and small projects. If your application's user base surpasses 100, Clerk also offers custom plans to accommodate your needs.
+Clerk offers a robust alternative to established authentication platforms such as Auth0 and Firebase. It stands out for its simplicity, flexibility, and robust security features. Even better, Clerk is ffree for up to 100 users, making it an attractive option for startups and small projects.
 
 In this guide, you'll use Clerk in your Next.js project. Walk you through every step, from initial installation to crafting custom themes. By the end, you'll have a Next.js application fortified with secure authentication, freeing you to focus on building the features for your project.
 
 ## Installation and Setup
 
-This section will guide you through the installation and setup process step by step. If you're new to these tools and technologies we'll provide explanations along the way.
+This section will guide you through the installation and setup process step by step. If you're new to these tools and technologies don't worry, an explanations will follow.
 
 1. **Create a New Next.js Project**: To start, let's create a new Next.js project. Open your terminal and run the following command:
 
@@ -107,9 +107,7 @@ Follow these steps:
 
 - `Configure Environment Variables`: Create a new file in your project's root directory named .env.local. Paste the API Key and Public Key into this file. Make sure you choose the correct framework if you're not using Next.js.
 
-5. **Integrate Clerk Provider**
-
-To set up the ClerkProvider in your app's layout, follow these steps:
+5. **Integrate Clerk Provider**: To set up the ClerkProvider in your app's layout, follow these steps.
 
 - Open your `app/layout.tsx` file.
 
@@ -372,7 +370,7 @@ export default Login;
 
 This code imports and renders the default Clerk SignIn component, providing a standard login form. You can further customize this page or add your components as needed.
 
-2. **Access Login Page**: To access the login page, click on the Login link or navigate to `localhost:3000/login`. The [...login] dynamic route ensures that this page captures all routes starting with /login.
+2. **Access Login Page**: To access the login page, click on the Login link or navigate to `localhost:3000/login`. The `[...login]` dynamic route ensures that this page captures all routes starting with `/login`.
 
 3. **Create a Signup Page**: To create a custom signup page, follow the same steps as above. However, use the Signup component from Clerk instead of SignIn. Here's an example:
 
@@ -404,7 +402,7 @@ To dynamically update the header based on the user's authentication status, foll
 import { auth } from "@clerk/nextjs";
 ```
 
-2. **Destructure the userId**: Inside the Header component, use destructuring to get the userId from the auth() function:
+2. **Destructure the userId**: Inside the Header component, use destructuring to get the `userId` from the `auth()` function:
 
 ```tsx
 const { userId } = auth();
@@ -441,13 +439,13 @@ With these changes, your Header component now dynamically adapts its content bas
 
 To add a user button for authentication actions in your Header component, follow these steps:
 
-1. **Import Clerk's UserButton and auth Functionality**: Import the UserButton component and auth function from @clerk/nextjs into your Header component:
+1. **Import Clerk's UserButton and auth Functionality**: Import the `UserButton` component and auth function from `@clerk/nextjs` into your Header component:
 
 ```tsx
 import { auth, UserButton } from "@clerk/nextjs";
 ```
 
-2. **Add the UserButton Component**: Place the UserButton component in your Header where you want it to appear:
+2. **Add the UserButton Component**: Place the `UserButton` component in your Header where you want it to appear:
 
 ```tsx
 <div className="mx-auto">
@@ -455,15 +453,15 @@ import { auth, UserButton } from "@clerk/nextjs";
 </div>
 ```
 
-The UserButton component automatically handles user authentication actions such as sign-in and sign-out.
+The `UserButton` component automatically handles user authentication actions such as sign-in and sign-out.
 
-With these changes, your Header component now includes the UserButton, allowing users to perform authentication actions conveniently. It enhances the user experience by providing easy access to authentication-related functions.
+With these changes, your Header component now includes the `UserButton`, allowing users to perform authentication actions conveniently. It enhances the user experience by providing easy access to authentication-related functions.
 
 ## Create Profile Page
 
 To create a profile page using Clerk, follow these steps:
 
-1. **Create a Profile Page Component**: Create a new file, such as page.tsx, in the app\profile directory or your preferred location. Then, add the following code:
+1. **Create a Profile Page Component**: Create a new file, such as `page.tsx`, in the `app\profile` directory or your preferred location. Then, add the following code:
 
 ```tsx
 import { UserProfile } from "@clerk/nextjs";
@@ -481,7 +479,7 @@ const Profile = (props: Props) => {
 export default Profile;
 ```
 
-This component leverages UserProfile from Clerk to display the user's profile information.
+This component leverages `UserProfile` from Clerk to display the user's profile information.
 
 2. **Access the Profile Page**: To access the profile page, navigate to `http://localhost:3000/profile` in your web browser. You should see the user's profile details.
 
@@ -564,7 +562,7 @@ To test the email signup and verification code flow in your Clerk-based applicat
 
 5. **Redirect to Dashboard**: Upon successful verification, you should be automatically redirected to the Dashboard page.
 
-6. **Update Public Routes (if needed)**: Ensure that your public routes are correctly configured in the middleware.ts file to include the Register page or any other relevant pages. Below is an example configuration of public routes in middleware.ts:
+6. **Update Public Routes (if needed)**: Ensure that your public routes are correctly configured in the `middleware.ts` file to include the Register page or any other relevant pages. Below is an example configuration of public routes in `middleware.ts`:
 
 ```tsx
 import { authMiddleware } from "@clerk/nextjs";
