@@ -521,3 +521,50 @@ export const config = {
   matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
 };
 ```
+
+## Custom Themes
+
+In your console, run the following command:
+
+```bash
+npm i @clerk/themes
+```
+
+Then go to the file called `layout.tsx` in `app\layout.tsx` and add the following code:
+
+```tsx
+import { dark } from "@clerk/themes";
+```
+
+Then add the `dark` theme to the `ClerkProvider` component.
+
+```tsx
+<ClerkProvider
+  appearance={{
+    baseTheme: dark,
+  }}
+></ClerkProvider>
+```
+
+Now your `ClerkProvider` component should look like this:
+
+```tsx
+<ClerkProvider
+  appearance={{
+    baseTheme: dark,
+  }}
+>
+  <html lang="en">
+    <body className={inter.className}>
+      <main className="2xl:container mx-auto">
+        <Header />
+        <div className="flex items-start justify-center min-h-screen">
+          <div className="mt-20">{children}</div>
+        </div>
+      </main>
+    </body>
+  </html>
+</ClerkProvider>
+```
+
+This will add the dark theme for ClerkProvider to your application. Dark theme is triggered if the user has dark mode enabled on their device in Next.js.

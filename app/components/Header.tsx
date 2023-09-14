@@ -9,7 +9,7 @@ const Header = (props: Props) => {
 
   return (
     <div>
-      <nav className="bg-indigo-900  text-indigo-50 p-4 flex items-center justify-between mb-4">
+      <nav className="bg-indigo-900  text-indigo-50 p-4 flex items-center justify-between mb-4 dark:bg-indigo-600">
         <div className="flex items-center">
           <Link href="/">
             <div className="hover:text-indigo-300 text-sm uppercase font-bold">
