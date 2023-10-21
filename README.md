@@ -1,5 +1,7 @@
 # Simple Next.js & React Authentication With Clerk
 
+[![CodeQL](https://github.com/milliorn/nextjs-clerk-auth-starter/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/milliorn/nextjs-clerk-auth-starter/actions/workflows/github-code-scanning/codeql)
+
 ## Table of Contents
 
 - [Introduction](#introduction)
